@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhHq6d5QmR0Ergf4eGf emitBtOAnKn8NmtOYDXFQmx2uua3TJHYe888" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="detailstyle.css">
+    </head>
+    <body>
+      <h1 class="text-center">ROCK.PAPER.SCISSOR</h1>
+
+      <div class="holdershold text-center">
+      <div class="buttoncard text-center">
+    <button
+    onclick="
+    const rnumber= Math.random();
+    let cmove ='';
+    if (rnumber >=  0 && rnumber < 1/6){
+     cmove='rock';
+    } 
+    else if(rnumber >= 1/6 && rnumber < 2/6 ){ 
+      cmove='paper';
+    }
+    else if(rnumber >=2/6  && rnumber <1) {
+     cmove='scissor';
+    }
+    let res='';
+    if(cmove==='rock'){
+      res='tie';
+    }
+    else if(cmove==='paper'){
+      res='lose';
+    }
+      else if (cmove==='scissor'){
+        res='win';
+      }
+      alert(`you chose rock ,computer chose ${cmove} the is result is ${res} `);
+    ">
+    rock</button>
+    <button 
+    onclick="
+   rnumber= Math.random();
+    if (rnumber >=  0 && rnumber < 1/6){
+     cmove='rock';
+    } 
+    else if(rnumber >= 1/6 && rnumber < 2/6 ){ 
+      cmove='paper';
+    }
+    else if(rnumber >=2/6  && rnumber <1) {
+     cmove='scissor';
+    }
+
+    
+   
+    if(cmove==='paper'){
+      res='tie';
+    }
+    else if(cmove==='scissor'){
+      res='lose';
+    }
+      else if (cmove==='rock'){
+        res='win';
+      }
+      alert(`you chose paper ,computer chose ${cmove} the is result is ${res} `);
+    ">
+    paper</button>
+    <button
+    onclick="
+    rnumber= Math.random();
+ 
+ 
+     if (rnumber >=  0 && rnumber < 1/6){
+      cmove='rock';
+     } 
+     else if(rnumber >= 1/6 && rnumber < 2/6 ){ 
+       cmove='paper';
+     }
+     else if(rnumber >=2/6  && rnumber <1) {
+      cmove='scissor';
+     }
+     if(cmove==='scissor'){
+       res='tie';
+     }
+     else if(cmove==='rock'){
+       res='lose';
+     }
+       else if (cmove==='paper'){
+         res='win';
+       }
+       alert(`you chose   scissor ,computer chose ${cmove} the is result is ${res} `);
+     ">
+    scissor</button>
+    </div>
+    </div>
+    <script></script>
+    </body>
+</html>
