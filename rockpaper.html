@@ -12,87 +12,94 @@
 
       <div class="holdershold text-center">
       <div class="buttoncard text-center">
+  
     <button
-    onclick="
-    const rnumber= Math.random();
-    let cmove ='';
-    if (rnumber >=  0 && rnumber < 1/6){
-     cmove='rock';
-    } 
-    else if(rnumber >= 1/6 && rnumber < 2/6 ){ 
-      cmove='paper';
-    }
-    else if(rnumber >=2/6  && rnumber <1) {
-     cmove='scissor';
-    }
-    let res='';
-    if(cmove==='rock'){
-      res='tie';
-    }
-    else if(cmove==='paper'){
-      res='lose';
-    }
-      else if (cmove==='scissor'){
-        res='win';
-      }
-      alert(`you chose rock ,computer chose ${cmove} the is result is ${res} `);
-    ">
-    rock</button>
-    <button 
-    onclick="
-   rnumber= Math.random();
-    if (rnumber >=  0 && rnumber < 1/6){
-     cmove='rock';
-    } 
-    else if(rnumber >= 1/6 && rnumber < 2/6 ){ 
-      cmove='paper';
-    }
-    else if(rnumber >=2/6  && rnumber <1) {
-     cmove='scissor';
-    }
-
+    onclick="playgame('rock');"
+    >rock</button>
+    <button
+    onclick="playgame('paper');
+    ">paper</button>
+    <button
+    onclick="playgame('scissor');
+    ">scissor</button>
     
+  
+    </div>
+    </div>
+  
    
-    if(cmove==='paper'){
-      res='tie';
-    }
-    else if(cmove==='scissor'){
-      res='lose';
-    }
-      else if (cmove==='rock'){
-        res='win';
+     <script>
+      function playgame(pmove)
+      {
+        cmove = computerMove();
+        let res='';
+        if(pmove === 'scissor')
+        {
+          if(cmove === 'rock')
+          {
+            res = 'Computer wins';
+            }
+            else if(cmove === 'paper')
+            {
+              res = 'You win';
+          }
+        else if(cmove===pmove)
+        {
+          res ='tie';
+        }
+        }
+        else if(pmove==='paper')
+        {
+          if(cmove === 'scissor')
+          {
+            res = 'Computer wins';
+        }
+        else if(cmove === 'rock')
+        {
+          res = 'You win';
+        }
+         else if(cmove===pmove)
+        {
+          res ='tie';
+        } 
       }
-      alert(`you chose paper ,computer chose ${cmove} the is result is ${res} `);
-    ">
-    paper</button>
-    <button
-    onclick="
-    rnumber= Math.random();
- 
- 
-     if (rnumber >=  0 && rnumber < 1/6){
-      cmove='rock';
-     } 
-     else if(rnumber >= 1/6 && rnumber < 2/6 ){ 
-       cmove='paper';
-     }
-     else if(rnumber >=2/6  && rnumber <1) {
-      cmove='scissor';
-     }
-     if(cmove==='scissor'){
-       res='tie';
-     }
-     else if(cmove==='rock'){
-       res='lose';
-     }
-       else if (cmove==='paper'){
-         res='win';
-       }
-       alert(`you chose   scissor ,computer chose ${cmove} the is result is ${res} `);
-     ">
-    scissor</button>
-    </div>
-    </div>
-    <script></script>
+      else if(pmove==='rock')
+      {
+        if(cmove === 'paper')
+        {
+          res = 'You win';
+        }
+        else if(pmove === 'scissor')
+        {
+          res = 'Computer wins';
+          }
+          else if(cmove===pmove)
+           {
+            res ='tie';
+            }
+            }
+         
+        alert(`you picked ${pmove},computer picked ${cmove} the result is ${res}`);
+        }  
+      function computerMove()
+            {
+              const rmove=Math.random();
+              let cmove ='';
+              if(rmove>=0&&rmove<1/3)
+                {
+                  cmove='rock';
+                }
+              else if(rmove>=1/3&&rmove<2/3)
+                {
+                  cmove='paper';
+                }
+                else
+                {
+                    cmove='scissor';
+                }
+              return cmove;
+            }
+     </script> 
+   
     </body>
 </html>
