@@ -22,13 +22,63 @@
     <button
     onclick="playgame('scissor');
     ">scissor</button>
-    
+   <button
+   onclick="resetscore();
+   localStorage.removeItem('score');
+   ">
+   resetscore</button>
+   
   
     </div>
     </div>
+    
   
    
      <script>
+ /*     
+ const lol ={
+              name:'koj',
+              age:0,
+            lol2:
+            {
+              names:'kojj',
+              ages:90 ,
+            },
+            fun: function lol()
+            {
+              console.log('lol3 running');
+            },
+          }
+         lol.fun();
+         console.log(JSON.stringify(lol));
+            console.log(lol.lol2.ages);
+            console.log(lol.lol2.names);
+            console.log(lol.name);
+            console.log(lol.age);
+            console.log(JSON.stringify(lol.lol2));
+            const stringdata=JSON.stringify(lol.lol2);
+          console.log(  JSON.parse(stringdata));
+          console.log(lol.lollll);
+*/
+
+console.log(JSON.parse(localStorage.getItem('score')) );
+      let score= JSON.parse(localStorage.getItem('score')) ||{ wins:0,
+      losses:0,
+        ties:0
+      }
+       function resetscore(){
+        score.wins=0;
+        score.losses=0;
+        score.ties=0;
+       // localStorage.setItem('score',JSON.stringify(score));//
+        alert(`The scores have been set to zero\nwins:${score.wins}\nlosses:${score.losses}\nties:${score.ties}`)
+      }
+      if(!score){
+        score.wins=0;
+        score.losses=0;
+        score.ties=0;
+      }
+
       function playgame(pmove)
       {
         cmove = computerMove();
@@ -37,7 +87,7 @@
         {
           if(cmove === 'rock')
           {
-            res = 'Computer wins';
+            res = 'You lose';
             }
             else if(cmove === 'paper')
             {
@@ -52,7 +102,7 @@
         {
           if(cmove === 'scissor')
           {
-            res = 'Computer wins';
+            res = 'You lose';
         }
         else if(cmove === 'rock')
         {
@@ -67,20 +117,35 @@
       {
         if(cmove === 'paper')
         {
-          res = 'You win';
+          res = 'You lose';
         }
-        else if(pmove === 'scissor')
-        {
-          res = 'Computer wins';
-          }
+        else if(cmove === 'scissor')
+        
+          res = 'You win';
+          
           else if(cmove===pmove)
            {
             res ='tie';
             }
             }
-         
-        alert(`you picked ${pmove},computer picked ${cmove} the result is ${res}`);
+        
+        if(res==='You win'){
+          score.wins+=1;
+        }    
+        else if(res==='You lose'){
+          score.losses+=1;
+        }
+        else if(res==='tie'){
+          score.ties+=1;
+        }
+
+        localStorage.setItem('score',JSON.stringify(score));
+
+        alert(`you picked ${pmove},computer picked ${cmove} the result is ${res} \nwins:${score.wins}\nlosses:${score.losses}\nties:${score.ties}`);
+        
+
         }  
+ 
       function computerMove()
             {
               const rmove=Math.random();
@@ -99,6 +164,7 @@
                 }
               return cmove;
             }
+           
      </script> 
    
     </body>
