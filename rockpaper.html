@@ -8,14 +8,17 @@
         <link rel="stylesheet" href="detailstyle.css">
     </head>
     <body>
+      <div class="page1">
       <h1 class="text-center">ROCK.PAPER.SCISSOR</h1>
 
       <div class="holdershold text-center">
+        
+        
       <div class="buttoncard text-center">
-  
+        
     <button
-    onclick="playgame('rock');"
-    >rock</button>
+    onclick="playgame('rock');
+     ">rock</button>
     <button
     onclick="playgame('paper');
     ">paper</button>
@@ -26,59 +29,45 @@
    onclick="resetscore();
    localStorage.removeItem('score');
    ">
-   resetscore</button>
    
+   resetscore</button>
   
     </div>
+    <p class="js-score"></p>
+    <p class="js-move"></p>
+    <p class="res"></p>
     </div>
-    
-  
+  </div>
+   
+   
+
    
      <script>
- /*     
- const lol ={
-              name:'koj',
-              age:0,
-            lol2:
-            {
-              names:'kojj',
-              ages:90 ,
-            },
-            fun: function lol()
-            {
-              console.log('lol3 running');
-            },
-          }
-         lol.fun();
-         console.log(JSON.stringify(lol));
-            console.log(lol.lol2.ages);
-            console.log(lol.lol2.names);
-            console.log(lol.name);
-            console.log(lol.age);
-            console.log(JSON.stringify(lol.lol2));
-            const stringdata=JSON.stringify(lol.lol2);
-          console.log(  JSON.parse(stringdata));
-          console.log(lol.lollll);
-*/
-
+ 
 console.log(JSON.parse(localStorage.getItem('score')) );
       let score= JSON.parse(localStorage.getItem('score')) ||{ wins:0,
       losses:0,
         ties:0
       }
+      livescore();
        function resetscore(){
         score.wins=0;
         score.losses=0;
         score.ties=0;
        // localStorage.setItem('score',JSON.stringify(score));//
-        alert(`The scores have been set to zero\nwins:${score.wins}\nlosses:${score.losses}\nties:${score.ties}`)
+       livescore();
+        alert(`The scores have been set to zero`);
       }
       if(!score){
         score.wins=0;
         score.losses=0;
         score.ties=0;
       }
-
+function livescore(){
+  document.querySelector('.js-score')
+      .innerHTML=`wins:${score.wins} losses:${score.losses} draws:${score.ties}
+      ` 
+}
       function playgame(pmove)
       {
         cmove = computerMove();
@@ -140,10 +129,11 @@ console.log(JSON.parse(localStorage.getItem('score')) );
         }
 
         localStorage.setItem('score',JSON.stringify(score));
-
-        alert(`you picked ${pmove},computer picked ${cmove} the result is ${res} \nwins:${score.wins}\nlosses:${score.losses}\nties:${score.ties}`);
-        
-
+        livescore();
+        document.querySelector('.js-move').
+        innerHTML=`your move:${pmove}-computer move:${cmove}`;
+       document.querySelector('.res').
+       innerHTML= `${res}!`;
         }  
  
       function computerMove()
